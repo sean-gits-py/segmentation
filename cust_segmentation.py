@@ -101,3 +101,5 @@ qtr_sum_df_ord['segment'] = qtr_sum_df_ord.apply(segment, axis = 1)
 rpt_qrt = pd.DataFrame.from_records(quarters_range(kpi_df.date.max(), date_from=kpi_df.date.min()), columns=['quarter', 'year']) 
 
 qtr_sum_df_ord_ = rpt_qrt.merge(qtr_sum_df_ord, how = 'left', on=['quarter', 'year'])
+
+qtr_sum_df_ord_[['quarter', 'year', 'atc_org_id', 'rank', 'sales', 'cumulsales', 'running_pct', 'segment', 'through_dt']].to_csv('segs_qtrly.csv', index=False)
